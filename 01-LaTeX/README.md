@@ -343,46 +343,315 @@ This is the second page.
 
 ## 7. Lists and Environments
 
-LaTeX provides environments for organizing content.
+LaTeX provides different environments to organize information into lists.
 
-- `itemize` – Bulleted lists.
-- `enumerate` – Numbered lists.
-- `description` – Description lists.
+### 1. Unordered List (`itemize`)
 
-The `enumitem` package can customize list appearance, indentation, and labels.
+Creates a bulleted list.
+
+```latex
+\begin{itemize}
+    \item First item
+    \item Second item
+    \item Third item
+\end{itemize}
+```
+
+### 2. Ordered List (`enumerate`)
+
+Creates a numbered list.
+
+```latex
+\begin{enumerate}
+    \item First item
+    \item Second item
+    \item Third item
+\end{enumerate}
+```
+
+### 3. Description List (`description`)
+
+Creates a list containing terms and their descriptions.
+
+```latex
+\begin{description}
+    \item[LaTeX] Document preparation system.
+    \item[Overleaf] Online LaTeX editor.
+\end{description}
+```
+
+### Nested Lists
+
+Lists can be placed inside other lists.
+
+```latex
+\begin{itemize}
+    \item Programming Languages
+    \begin{enumerate}
+        \item C++
+        \item Java
+    \end{enumerate}
+    \item Markup Languages
+\end{itemize}
+```
+
+### Customizing Lists
+
+The `enumitem` package allows customization of list appearance.
+
+```latex
+\usepackage{enumitem}
+
+\begin{enumerate}[label=\alph*)]
+    \item First item
+    \item Second item
+\end{enumerate}
+```
+
+This produces an alphabetically labelled list.
+
+**Remember:**
+- `itemize` creates bullets.
+- `enumerate` creates numbered lists.
+- `description` creates term-description lists.
+- Every list item begins with `\item`.
 
 ## 8. Mathematical Expressions
 
-LaTeX provides mathematical notation through math mode.
+LaTeX provides powerful commands for writing mathematical expressions, equations and symbols.
 
-- Inline mathematics: `\( ... \)`
-- Display mathematics: `\[ ... \]`
+### 8.1 Inline Mathematics
 
-Common mathematical commands:
+Used to include mathematical expressions within a line of text.
 
-| Command | Purpose |
+```latex
+The equation is \(a^2 + b^2 = c^2\).
+```
+
+You can also use `$...$` for inline mathematics.
+
+### 8.2 Display Mathematics
+
+Used to display equations separately, centered on the page.
+
+```latex
+\[
+a^2 + b^2 = c^2
+\]
+```
+
+### 8.3 Superscripts and Subscripts
+
+| Syntax | Meaning |
 |---|---|
-| `\frac{a}{b}` | Fractions |
-| `\sqrt{x}` | Square root |
-| `\sum` | Summation |
-| `\prod` | Product |
-| `\int` | Integral |
-| `\alpha`, `\beta` | Greek letters |
-| `\leq`, `\neq` | Mathematical relations |
+| `x^2` | Superscript |
+| `x_1` | Subscript |
+| `x^{10}` | Multi-character superscript |
+| `x_{12}` | Multi-character subscript |
+
+Example:
+
+```latex
+\[
+x^2 + y_1 + z^{10}
+\]
+```
+
+### 8.4 Fractions
+
+Use `\frac{numerator}{denominator}`.
+
+```latex
+\[
+\frac{a+b}{c+d}
+\]
+```
+
+### 8.5 Square Roots
+
+Use `\sqrt{}` to create a square root.
+
+```latex
+\[
+\sqrt{x^2+y^2}
+\]
+```
+
+For other roots:
+
+```latex
+\[
+\sqrt[3]{x}
+\]
+```
+
+### 8.6 Greek Letters
+
+Some commonly used Greek symbols:
+
+| Command | Symbol |
+|---|---|
+| `\alpha` | α |
+| `\beta` | β |
+| `\gamma` | γ |
+| `\delta` | δ |
+| `\theta` | θ |
+| `\lambda` | λ |
+| `\mu` | μ |
+| `\pi` | π |
+| `\sigma` | σ |
+| `\omega` | ω |
+| `\Gamma` | Γ |
+| `\Delta` | Δ |
+| `\Omega` | Ω |
+
+Example:
+
+```latex
+\[
+\alpha + \beta = \gamma
+\]
+```
+
+### 8.7 Summation and Product
+
+| Command | Symbol |
+|---|---|
+| `\sum` | Summation (∑) |
+| `\prod` | Product (∏) |
+| `\int` | Integral (∫) |
+
+Example:
+
+```latex
+\[
+\sum_{i=1}^{n} i
+\]
+
+\[
+\prod_{i=1}^{n} i
+\]
+
+\[
+\int_0^1 x^2\,dx
+\]
+```
+
+### 8.8 Common Mathematical Symbols
+
+| Command | Symbol |
+|---|---|
+| `\times` | × |
+| `\div` | ÷ |
+| `\
 
 ## 9. Arrays and Matrices
 
-LaTeX supports arrays and different matrix formats.
+LaTeX provides the `array` environment for arranging mathematical expressions in rows and columns. The `amsmath` package provides different matrix environments.
 
-Common matrix environments:
+### 9.1 Array Environment
 
-- `pmatrix` – Parentheses.
-- `bmatrix` – Square brackets.
-- `Bmatrix` – Curly braces.
-- `vmatrix` – Single vertical bars.
-- `Vmatrix` – Double vertical bars.
+The `array` environment is used to arrange mathematical elements in tabular form.
 
-## 10. Tables
+**Syntax:**
+
+```latex
+\begin{array}{column_alignment}
+    element & element \\
+    element & element
+\end{array}
+```
+
+Column alignment options:
+- `l` – Left aligned
+- `c` – Center aligned
+- `r` – Right aligned
+
+Example:
+
+```latex
+\[
+\begin{array}{ccc}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{array}
+\]
+```
+
+### 9.2 Matrix Environments
+
+The `amsmath` package provides several environments for creating matrices.
+
+| Environment | Appearance |
+|---|---|
+| `matrix` | No surrounding brackets |
+| `pmatrix` | Parentheses ( ) |
+| `bmatrix` | Square brackets [ ] |
+| `Bmatrix` | Curly braces { } |
+| `vmatrix` | Single vertical bars |
+| `Vmatrix` | Double vertical bars |
+
+### 9.3 Matrix Examples
+
+**Matrix without brackets:**
+
+```latex
+\[
+\begin{matrix}
+1 & 2 \\
+3 & 4
+\end{matrix}
+\]
+```
+
+**Matrix with parentheses:**
+
+```latex
+\[
+\begin{pmatrix}
+1 & 2 \\
+3 & 4
+\end{pmatrix}
+\]
+```
+
+**Matrix with square brackets:**
+
+```latex
+\[
+\begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix}
+\]
+```
+
+**Matrix with curly braces:**
+
+```latex
+\[
+\begin{Bmatrix}
+1 & 2 \\
+3 & 4
+\end{Bmatrix}
+\]
+```
+
+### 9.4 Important Symbols
+
+- `&` separates columns.
+- `\\` starts a new row.
+- Each row should contain the appropriate number of elements.
+
+### Important Package
+
+```latex
+\usepackage{amsmath}
+```
+
+**Remember:** Matrix environments are generally used inside mathematical mode, such as `\[ ... \]`.
+
 
 Tables are created using the `tabular` environment.
 
@@ -395,6 +664,115 @@ Important commands:
 - `\multirow{}` – Combines rows.
 
 The `table` environment can be used for captions, labels, and positioning.
+
+## 10. Tables in LaTeX
+
+LaTeX uses the `tabular` environment to create tables consisting of rows and columns.
+
+### 10.1 Basic Table Structure
+
+**Syntax:**
+
+```latex
+\begin{tabular}{column_alignment}
+    element & element \\
+    element & element
+\end{tabular}
+```
+
+Column alignment:
+- `l` – Left aligned
+- `c` – Center aligned
+- `r` – Right aligned
+
+Important symbols:
+- `&` separates columns.
+- `\\` ends a row.
+- `\hline` creates a horizontal line.
+
+### 10.2 Basic Table Example
+
+```latex
+\begin{tabular}{|c|c|c|}
+\hline
+Name & Age & City \\
+\hline
+John & 20 & Delhi \\
+Alice & 21 & Mumbai \\
+\hline
+\end{tabular}
+```
+
+### 10.3 Table Environment
+
+The `table` environment allows a table to float and provides captions and labels.
+
+```latex
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Subject & Marks \\
+\hline
+Maths & 90 \\
+Science & 85 \\
+\hline
+\end{tabular}
+\caption{Student Marks}
+\label{tab:marks}
+\end{table}
+```
+
+### 10.4 Table Positioning
+
+| Option | Meaning |
+|---|---|
+| `h` | Place approximately here |
+| `t` | Top of page |
+| `b` | Bottom of page |
+| `p` | Separate page for floats |
+| `!` | Relax certain placement restrictions |
+| `H` | Place exactly here (requires the `float` package) |
+
+Example:
+
+```latex
+\begin{table}[ht]
+...
+\end{table}
+```
+
+### 10.5 Multicolumn
+
+The `\multicolumn` command combines multiple columns into one cell.
+
+**Syntax:**
+
+```latex
+\multicolumn{number_of_columns}{alignment}{text}
+```
+
+Example:
+
+```latex
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{Student Details} \\
+\hline
+Name & Age & Marks \\
+\hline
+John & 20 & 90 \\
+\hline
+\end{tabular}
+```
+
+### 10.6 Multirow
+
+The `\multirow` command combines multiple rows into one cell. It requires the `multirow` package.
+
+```latex
+\use
+```
 
 ## 11. Figures and Pictures
 
@@ -423,7 +801,7 @@ Important commands:
 - `\fcolorbox{}` – Adds a coloured border and background.
 - `\pagecolor{}` – Changes the page background.
 
-## 13. References and Learning Resources
+## 13. Referen## 10. Tablesces and Learning Resources
 
 The documentation is based primarily on the course materials provided for Technical Writing.
 

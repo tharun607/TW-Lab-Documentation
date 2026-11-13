@@ -79,62 +79,267 @@ LaTeX supports equations, tables and images.
 
 ## 3. Document Classes
 
-The `\documentclass{}` command determines the overall structure and appearance of a document.
+A document class defines the overall structure and formatting of a LaTeX document. It is specified using the `\documentclass{}` command in the preamble.
 
-Common document classes:
+### Syntax
+
+```latex
+\documentclass[options]{class}
+```
+
+- `class`: Specifies the type of document.
+- `options`: Specifies additional formatting options, such as font size and paper size.
+
+### Common Document Classes
 
 | Class | Purpose |
 |---|---|
-| article | Research papers and short documents |
-| report | Reports and academic projects |
-| book | Books and dissertations |
-| beamer | Presentations |
-| letter | Formal letters |
-| exam | Question papers and examinations |
+| `article` | Articles, assignments, short reports and research papers. |
+| `report` | Longer reports, projects and dissertations. |
+| `book` | Books and lengthy documents divided into chapters. |
+| `beamer` | Creating presentations and slides. |
+| `letter` | Writing formal letters. |
+| `exam` | Preparing question papers and examinations. |
+
+### Example: Article Class
+
+```latex
+\documentclass[12pt,a4paper]{article}
+
+\begin{document}
+
+\section{Introduction}
+This is an article document.
+
+\subsection{Overview}
+This is a subsection.
+
+\end{document}
+```
+
 
 ## 4. Title Page and Abstract
 
-Important commands:
+A title page contains basic information about a document, such as its title, author and date.
 
-- `\title{}` – Defines the document title.
-- `\author{}` – Specifies the author.
-- `\date{}` – Specifies the date.
-- `\maketitle` – Generates the title section.
-- `\begin{abstract}` – Starts an abstract.
-
-## 5. Text Formatting and Styling
-
-LaTeX supports formatting through commands and packages.
-
-Examples:
-
-- `\textbf{}` – Bold text.
-- `\textit{}` – Italic text.
-- `\underline{}` – Underlined text.
-- `\texttt{}` – Monospaced text.
-- `\Huge`, `\Large`, `\small` – Font sizes.
-
-Important styling packages:
-
-- `sectsty` – Customizes section headings.
-- `fontspec` – Allows custom system fonts.
-- `xcolor` – Provides colour support.
-- `fancyhdr` – Customizes headers and footers.
-
-## 6. Text and Page Layout
-
-Important commands:
+### Important Commands
 
 | Command | Purpose |
 |---|---|
-| `\\` | Manual line break |
-| Blank line | Starts a new paragraph |
-| `\par` | Ends a paragraph |
-| `\newpage` | Starts a new page |
-| `\pagebreak` | Requests a page break |
-| `\clearpage` | Flushes pending figures and tables before a page break |
-| `\vspace{}` | Adds vertical space |
-| `\hspace{}` | Adds horizontal space |
+| `\title{}` | Specifies the document title. |
+| `\author{}` | Specifies the author's name. |
+| `\date{}` | Specifies the date. |
+| `\maketitle` | Generates the title section using the information provided. |
+| `\today` | Automatically inserts the current date. |
+
+### Example: Creating a Title
+
+```latex
+\documentclass{article}
+
+\title{Introduction to LaTeX}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This is my document.
+
+\end{document}
+```
+
+### Abstract
+
+An abstract is a short summary of the main purpose and content of a document.
+
+LaTeX provides the `abstract` environment to create one.
+
+**Syntax:**
+
+```latex
+\begin{abstract}
+Write a brief summary of your document here.
+\end{abstract}
+```
+
+### Complete Example
+
+```latex
+\documentclass{article}
+
+\title{Introduction to LaTeX}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document introduces the basics of LaTeX
+and its applications in document preparation.
+\end{abstract}
+
+\section{Introduction}
+LaTeX is a document preparation system.
+
+\end{document}
+```
+
+**Remember:**
+- Define title, author and date in the preamble.
+- Use `\maketitle` inside the document body.
+- The abstract environment is generally placed after the title and before the main sections.
+
+## 5. Text Formatting and Styling
+
+LaTeX provides commands to change the appearance of text, including bold, italic, underline, font size and alignment.
+
+### Basic Text Formatting
+
+| Command | Output / Purpose |
+|---|---|
+| `\textbf{Text}` | **Bold text** |
+| `\textit{Text}` | *Italic text* |
+| `\underline{Text}` | Underlined text |
+| `\texttt{Text}` | Monospaced text |
+| `\emph{Text}` | Emphasized text |
+
+### Example
+
+```latex
+\documentclass{article}
+
+\begin{document}
+
+This is normal text.
+
+\textbf{This is bold text.}
+
+\textit{This is italic text.}
+
+\underline{This is underlined text.}
+
+\texttt{This is monospaced text.}
+
+\emph{This is emphasized text.}
+
+\end{document}
+```
+
+### Font Sizes
+
+LaTeX provides predefined commands to change font size.
+
+| Command | Size |
+|---|---|
+| `\tiny` | Very small |
+| `\scriptsize` | Script size |
+| `\footnotesize` | Footnote size |
+| `\small` | Small |
+| `\normalsize` | Normal |
+| `\large` | Large |
+| `\Large` | Larger |
+| `\LARGE` | Very large |
+| `\huge` | Huge |
+| `\Huge` | Largest |
+
+Example:
+
+```latex
+{\Large This text is large.}
+
+{\small This text is small.}
+```
+
+Curly braces restrict the font-size change to the text inside them.
+
+### Text Alignment
+
+| Environment | Purpose |
+|---|---|
+| `center` | Centers the text. |
+| `flushleft` | Aligns text to the left. |
+| `flushright` | Aligns text to the right. |
+
+Example:
+
+```latex
+\begin{center}
+This text is centered.
+\end{center}
+
+\begin{flushleft}
+This text is left aligned.
+\end{flushleft}
+
+\begin{flushright}
+This text is right aligned.
+\end{flushright}
+```
+
+### Useful Styling Packages
+
+| Package | Purpose |
+|---|---|
+| `sectsty` | Customizes section heading fonts. |
+| `fontspec` | Provides access to system fonts (typically with XeLaTeX or LuaLaTeX). |
+| `xcolor` | Adds text and page colours. |
+
+Example of changing text colour:
+
+```latex
+\usepackage{xcolor}
+
+\textcolor{red}{This text is red.}
+```
+
+**Remember:** Packages must be loaded in the preamble, before `\begin{document}`.
+
+## 6. Text and Page Layout
+
+LaTeX provides commands to control paragraphs, line breaks, page breaks and text positioning.
+
+### Line Breaks and Paragraphs
+
+| Command | Purpose |
+|---|---|
+| `\\` | Starts a new line. |
+| `\newline` | Starts a new line. |
+| `\par` | Ends the current paragraph. |
+| Blank line | Creates a new paragraph. |
+
+Example:
+
+```latex
+This is the first line.\\
+This is the second line.
+
+This is a new paragraph.
+
+This is another paragraph.
+```
+
+### Page Breaks
+
+| Command | Purpose |
+|---|---|
+| `\newpage` | Starts a new page. |
+| `\pagebreak` | Suggests a page break. |
+| `\clearpage` | Starts a new page after processing pending floating figures and tables. |
+
+Example:
+
+```latex
+This is the first page.
+
+\newpage
+
+This is the second page.
+```
 
 ## 7. Lists and Environments
 
